@@ -3,6 +3,8 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import javamail.ServicioExterno;
 import model.Detalle;
 
@@ -43,8 +45,10 @@ public class ParkingLotImpl implements ParkingLot {
 	@Override
 	public void ingresoDetectado() {
 		// TODO Auto-generated method stub
-		Detalle d=new Detalle();
-		aparcados.add(d);
+		if(this.EspaciosDisponibles() >0){
+			Detalle d=new Detalle();
+			aparcados.add(d);
+		} else JOptionPane.showMessageDialog(null, "No hay lugares disponibles", "Error", JOptionPane.ERROR_MESSAGE);
 	}
 
 	@Override
@@ -79,7 +83,7 @@ public class ParkingLotImpl implements ParkingLot {
 		int montoFinal=precioPorDia*cantHs;
 		
 		if(notificarPorMail==true){
-			ServicioExterno.enviarMail("cuerpo de mail", "mail@example.org");
+			ServicioExterno.enviarMail("cuerpo de mail", "email@example.org");
 		}
 		else{
 			System.out.println("Monto a pagar: " +montoFinal);
@@ -115,7 +119,7 @@ public class ParkingLotImpl implements ParkingLot {
 	/**
 	 * Este metodo devuelve una posicion random del vector
 	 * Siempre y cuando haya autos en el estacionamiento*/
-	public int getRandomCode(){
+	public int getFirstCode(){
 		if(this.CantidadEstacionados()>0) //Si tengo autos aparcados
 			return aparcados.get(0).getCodigo(); //devuelvo el codigo de la primera posicion
 		return -1; //devuelvo -1 que significa que no hay autos estacionados, es un mal funcionamiento del servicio

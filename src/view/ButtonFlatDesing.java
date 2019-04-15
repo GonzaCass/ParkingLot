@@ -1,5 +1,8 @@
 package view;
 
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -72,7 +75,7 @@ public class ButtonFlatDesing extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				JOptionPane.showMessageDialog(null, "Egreso detectado");
-				int codigoEgreso=instanciaControlador.getRandomCode(); //Obtengo el codigo de una posicion de los autos aparcados
+				int codigoEgreso=instanciaControlador.getFirstCode(); //Obtengo el codigo de una posicion de los autos aparcados
 				if(codigoEgreso>0){ //Si el codigo existe
 					instanciaControlador.egresoDetectado(codigoEgreso); //Marco el egreso
 				}

@@ -91,7 +91,7 @@ public class ServicioExterno {
             transport.close();
         }
         catch (Exception ex) {
-            System.out.println("El email no se fue enviado.");
+            System.out.println("El email no fue enviado.");
             System.out.println("Error message: " + ex.getMessage());
         }
      

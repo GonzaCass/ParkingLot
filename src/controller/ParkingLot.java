@@ -18,7 +18,7 @@ public interface ParkingLot {
 	
 	public void facturarEstadia(int precioPorDia, Detalle autoEstacionado);
 
-	public int getRandomCode();
+	public int getFirstCode();
 
 	public void recorrerAutoPorEstadia();
 }
